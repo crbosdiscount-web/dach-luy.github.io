@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <meta charset="UTF-8">
@@ -7,7 +8,7 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-  <title>C Rbos Discount</title>
+  <title>C RBOS DISCOUNT</title>
 
   <link rel="stylesheet"
         href="style.css">
@@ -16,17 +17,13 @@
 
 <body>
 
-  <!-- LOGIN -->
+  <div class="login-page">
 
-  <div class="login-container"
-       id="loginPage">
-
-    <div class="login-box">
+    <div class="login-card">
 
       <h1>C Rbos Discount</h1>
 
-      <p>I want you to manage your money wisely.<br> Think Before You Spend</p>
-      
+      <p>Jay Luy Oy Jes Kit Phg </p>
 
       <input type="text"
              id="username"
@@ -39,167 +36,6 @@
       <button onclick="login()">
         Login
       </button>
-
-    </div>
-
-  </div>
-
-
-  <!-- MAIN APP -->
-
-  <div class="main-container"
-       id="mainPage">
-
-    <!-- NAVIGATION -->
-
-    <div class="sidebar">
-
-      <h2>C RBOS DISCOUNT</h2>
-     
-
-      <ul>
-
-        <li onclick="showPage('dashboard')">
-          Dashboard
-        </li>
-
-        <li onclick="showPage('income')">
-          Income
-        </li>
-
-        <li onclick="showPage('expense')">
-          Expense
-        </li>
-
-        <li onclick="showPage('statement')">
-          Statement
-        </li>
-
-      </ul>
-
-    </div>
-
-
-    <!-- CONTENT -->
-
-    <div class="content">
-
-      <!-- DASHBOARD -->
-
-      <section id="dashboard">
-
-        <h1>Dashboard</h1>
-    
-
-        <div class="cards">
-
-          <div class="card">
-
-            <h3>Total Balance</h3>
-
-            <p id="balance">$0</p>
-
-          </div>
-
-          <div class="card">
-
-            <h3>Total Income</h3>
-
-            <p id="incomeTotal">$0</p>
-
-          </div>
-
-          <div class="card">
-
-            <h3>Total Expense</h3>
-
-            <p id="expenseTotal">$0</p>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- INCOME -->
-
-      <section id="income"
-               style="display:none;">
-
-        <h1>Add Income</h1>
-
-        <input type="text"
-               id="incomeText"
-               placeholder="Income Name">
-
-        <input type="number"
-               id="incomeAmount"
-               placeholder="Amount">
-
-        <button onclick="addIncome()">
-          Save Income
-        </button>
-
-      </section>
-
-
-      <!-- EXPENSE -->
-
-      <section id="expense"
-               style="display:none;">
-
-        <h1>Add Expense</h1>
-
-        <input type="text"
-               id="expenseText"
-               placeholder="Expense Name">
-
-        <input type="number"
-               id="expenseAmount"
-               placeholder="Amount">
-
-        <button onclick="addExpense()">
-          Save Expense
-        </button>
-
-      </section>
-
-
-      <!-- STATEMENT -->
-
-      <section id="statement"
-               style="display:none;">
-
-        <h1>Transaction History</h1>
-
-        <table>
-
-          <thead>
-
-            <tr>
-
-              <th>Type</th>
-
-              <th>Name</th>
-
-              <th>Amount</th>
-
-              <th>Date</th>
-
-              <th>Time</th>
-
-            </tr>
-
-          </thead>
-
-          <tbody id="statementList">
-
-          </tbody>
-
-        </table>
-
-      </section>
 
     </div>
 

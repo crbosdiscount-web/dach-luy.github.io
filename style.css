@@ -1,431 +1,246 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 *{
-
   margin:0;
-
   padding:0;
-
   box-sizing:border-box;
-
   font-family:'Poppins',sans-serif;
-
 }
 
 body{
-
   background:#edf4ff;
-
+  display:flex;
+  justify-content:center;
   min-height:100vh;
-
-  color:#0f172a;
-
 }
 
+.app{
+  width:100%;
+  max-width:390px;
+  padding:18px;
+}
 
 /* LOGIN */
 
-.login-container{
-
+.login-page{
   width:100%;
-
   height:100vh;
-
   display:flex;
-
   justify-content:center;
-
   align-items:center;
-
-  padding:20px;
-
   background:
   linear-gradient(
     135deg,
-    #7dd3fc,
     #38bdf8,
     #2563eb
   );
-
 }
 
-.login-box{
-
-  width:100%;
-
-  max-width:360px;
-
+.login-card{
+  width:90%;
+  max-width:340px;
   background:white;
-
-  border-radius:35px;
-
-  padding:40px 30px;
-
+  padding:35px 25px;
+  border-radius:30px;
   text-align:center;
-
-  box-shadow:
-  0 15px 35px rgba(0,0,0,0.08);
-
 }
 
-.login-box h1{
-
-  font-size:34px;
-
+.login-card h1{
   color:#2563eb;
-
   margin-bottom:10px;
-
 }
 
-.login-box p{
-
+.login-card p{
   color:#64748b;
-
-  margin-bottom:25px;
-
+  margin-bottom:20px;
 }
 
-.login-box input{
-
+.login-card input{
   width:100%;
-
-  padding:16px;
-
+  padding:15px;
   margin-bottom:15px;
-
   border:none;
-
   border-radius:18px;
-
   background:#f1f5f9;
-
-  font-size:15px;
-
-  outline:none;
-
 }
 
-.login-box button{
-
+.login-card button{
   width:100%;
-
-  padding:16px;
-
+  padding:15px;
   border:none;
-
   border-radius:18px;
-
   background:
   linear-gradient(
     90deg,
     #38bdf8,
     #2563eb
   );
-
   color:white;
-
-  font-size:16px;
-
   font-weight:600;
-
-  cursor:pointer;
-
 }
 
+/* TOP */
 
-/* MAIN */
-
-.main-container{
-
-  display:none;
-
-}
-
-
-/* TOP BAR */
-
-.sidebar{
-
+.top-card{
   background:
   linear-gradient(
     135deg,
-    #7dd3fc,
-    #38bdf8
+    #38bdf8,
+    #2563eb
   );
-
-  padding:25px 20px;
-
-  border-bottom-left-radius:35px;
-
-  border-bottom-right-radius:35px;
-
-  position:sticky;
-
-  top:0;
-
-  z-index:1000;
-
-}
-
-.sidebar h2{
-
-  color:white;
-
-  margin-bottom:18px;
-
-  font-size:30px;
-
-}
-
-
-/* NAVIGATION */
-
-.sidebar ul{
-
-  list-style:none;
-
-  display:flex;
-
-  gap:10px;
-
-  overflow-x:auto;
-
-}
-
-.sidebar ul::-webkit-scrollbar{
-
-  display:none;
-
-}
-
-.sidebar ul li{
-
-  background:white;
-
-  color:#2563eb;
-
-  padding:12px 18px;
-
-  border-radius:18px;
-
-  cursor:pointer;
-
-  white-space:nowrap;
-
-  font-weight:500;
-
-  box-shadow:
-  0 5px 15px rgba(0,0,0,0.05);
-
-}
-
-.sidebar ul li:hover{
-
-  background:#2563eb;
-
-  color:white;
-
-}
-
-
-/* CONTENT */
-
-.content{
-
   padding:20px;
-
+  border-radius:30px;
+  color:white;
+  margin-bottom:18px;
 }
 
-.content h1{
+/* PROFILE */
 
-  margin-bottom:20px;
-
-  font-size:28px;
-
+.profile{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
 }
 
+.profile img{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid white;
+}
 
-/* CARDS */
+.profile p{
+  color:#dbeafe;
+  font-size:14px;
+}
 
-.cards{
+/* LOGOUT */
 
+.logout-btn{
+  margin-top:8px;
+  padding:8px 15px;
+  border:none;
+  border-radius:12px;
+  background:white;
+  color:#2563eb;
+  font-size:13px;
+  font-weight:600;
+}
+
+/* FILE */
+
+#uploadProfile{
+  width:100%;
+  margin-bottom:18px;
+  background:white;
+  border-radius:15px;
+  padding:8px;
+}
+
+/* BALANCE */
+
+.balance-card{
+  background:
+  rgba(255,255,255,0.2);
+  padding:20px;
+  border-radius:25px;
+}
+
+.balance-card h1{
+  font-size:38px;
+}
+
+/* DASHBOARD */
+
+.dashboard{
   display:grid;
-
-  grid-template-columns:
-  repeat(auto-fit,minmax(220px,1fr));
-
-  gap:18px;
-
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-bottom:18px;
 }
+
+.small-card{
+  padding:20px;
+  border-radius:25px;
+  color:white;
+}
+
+.income{
+  background:#22c55e;
+}
+
+.expense{
+  background:#ef4444;
+}
+
+/* CARD */
 
 .card{
-
   background:white;
-
-  border-radius:28px;
-
-  padding:25px;
-
-  box-shadow:
-  0 10px 25px rgba(0,0,0,0.05);
-
+  padding:20px;
+  border-radius:25px;
+  margin-bottom:18px;
 }
 
-.card h3{
-
-  color:#64748b;
-
-  margin-bottom:10px;
-
+.card h2{
+  margin-bottom:18px;
 }
-
-.card p{
-
-  font-size:32px;
-
-  font-weight:700;
-
-}
-
-
-/* COLORS */
-
-#balance{
-
-  color:#2563eb;
-
-}
-
-#incomeTotal{
-
-  color:#22c55e;
-
-}
-
-#expenseTotal{
-
-  color:#ef4444;
-
-}
-
 
 /* FORM */
 
-.content input{
-
+.card input{
   width:100%;
-
-  padding:16px;
-
-  margin-bottom:15px;
-
+  padding:15px;
+  margin-bottom:14px;
   border:none;
-
-  border-radius:20px;
-
-  background:white;
-
-  box-shadow:
-  0 5px 15px rgba(0,0,0,0.05);
-
-  outline:none;
-
-  font-size:15px;
-
+  border-radius:18px;
+  background:#f1f5f9;
 }
 
-.content button{
-
+.card button,
+.statement-btn{
   width:100%;
-
-  padding:16px;
-
+  padding:15px;
   border:none;
-
-  border-radius:20px;
-
+  border-radius:18px;
   background:
   linear-gradient(
     90deg,
     #38bdf8,
     #2563eb
   );
-
   color:white;
-
-  font-size:16px;
-
   font-weight:600;
-
-  cursor:pointer;
-
 }
 
+/* TRANSACTION */
 
-/* TABLE */
-
-table{
-
-  width:100%;
-
-  border-collapse:separate;
-
-  border-spacing:0 15px;
-
+.transaction{
+  background:#f8fbff;
+  padding:15px;
+  border-radius:18px;
+  margin-bottom:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-table th{
-
-  text-align:left;
-
-  padding:12px;
-
+.transaction-left p{
   color:#64748b;
-
+  font-size:13px;
 }
 
-table td{
-
-  background:white;
-
-  padding:18px 12px;
-
+.transaction-right{
+  font-size:18px;
+  font-weight:700;
 }
 
-table td:first-child{
-
-  border-top-left-radius:18px;
-
-  border-bottom-left-radius:18px;
-
+.plus{
+  color:#22c55e;
 }
 
-table td:last-child{
-
-  border-top-right-radius:18px;
-
-  border-bottom-right-radius:18px;
-
-}
-
-
-/* MOBILE */
-
-@media screen and (max-width:768px){
-
-  .cards{
-
-    grid-template-columns:1fr;
-
-  }
-
-  table{
-
-    display:block;
-
-    overflow-x:auto;
-
-  }
-
+.minus{
+  color:#ef4444;
 }

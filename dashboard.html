@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Dashboard</title>
+
+  <link rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+  <div class="app">
+
+    <!-- TOP -->
+
+    <div class="top-card">
+
+      <div class="profile">
+
+        <img src="https://i.imgur.com/6VBx3io.png"
+             id="profileImage">
+
+        <div>
+
+          <h2 id="profileName">
+            User
+          </h2>
+
+          <p>Wallet Account</p>
+
+          <button onclick="logout()"
+                  class="logout-btn">
+            Logout
+          </button>
+
+        </div>
+
+      </div>
+
+      <input type="file"
+             id="uploadProfile"
+             accept="image/*">
+
+      <div class="balance-card">
+
+        <h3>Total Balance</h3>
+
+        <h1 id="balance">$0</h1>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- DASHBOARD -->
+
+    <div class="dashboard">
+
+      <div class="small-card income">
+
+        <h3>Income</h3>
+
+        <p id="incomeTotal">$0</p>
+
+      </div>
+
+      <div class="small-card expense">
+
+        <h3>Expense</h3>
+
+        <p id="expenseTotal">$0</p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ADD INCOME -->
+
+    <div class="card">
+
+      <h2>Add Income</h2>
+
+      <input type="text"
+             id="incomeText"
+             placeholder="Income Name">
+
+      <input type="number"
+             id="incomeAmount"
+             placeholder="Amount">
+
+      <button onclick="addIncome()">
+        Save Income
+      </button>
+
+    </div>
+
+
+
+    <!-- ADD EXPENSE -->
+
+    <div class="card">
+
+      <h2>Add Expense</h2>
+
+      <input type="text"
+             id="expenseText"
+             placeholder="Expense Name">
+
+      <input type="number"
+             id="expenseAmount"
+             placeholder="Amount">
+
+      <button onclick="addExpense()">
+        Save Expense
+      </button>
+
+    </div>
+
+
+
+    <!-- BUTTON -->
+
+    <a href="statement.html">
+
+      <button class="statement-btn">
+        View Statements
+      </button>
+
+    </a>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

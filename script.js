@@ -8,24 +8,21 @@ function login(){
   let password =
     document.getElementById("password").value;
 
-
   if(username !== "" &&
      password !== ""){
 
-    document.getElementById("loginPage")
-    .style.display = "none";
+    localStorage.setItem(
+      "isLoggedIn",
+      "true"
+    );
 
-    document.getElementById("mainPage")
-    .style.display = "block";
+    localStorage.setItem(
+      "username",
+      username
+    );
 
-    loadDashboard();
-
-    loadStatement();
-
-  }
-  else{
-
-    alert("Please enter username and password");
+    window.location.href =
+      "dashboard.html";
 
   }
 
@@ -33,85 +30,138 @@ function login(){
 
 
 
-// PAGE
+// LOGOUT
 
-function showPage(pageId){
+function logout(){
 
-  let sections =
-    document.querySelectorAll("section");
+  localStorage.removeItem(
+    "isLoggedIn"
+  );
+
+  window.location.href =
+    "index.html";
+
+}
 
 
-  sections.forEach(function(section){
 
-    section.style.display = "none";
+// LOAD
+
+window.onload = function(){
+
+  let savedUsername =
+    localStorage.getItem("username");
+
+  if(savedUsername &&
+     document.getElementById("profileName")){
+
+    document.getElementById("profileName")
+    .innerHTML =
+    savedUsername;
+
+  }
+
+  let savedImage =
+    localStorage.getItem("profileImage");
+
+  if(savedImage &&
+     document.getElementById("profileImage")){
+
+    document.getElementById("profileImage")
+    .src = savedImage;
+
+  }
+
+  loadDashboard();
+
+  loadStatement();
+
+};
+
+
+
+// PROFILE IMAGE
+
+if(document.getElementById("uploadProfile")){
+
+  document.getElementById("uploadProfile")
+  .addEventListener("change", function(){
+
+    let file = this.files[0];
+
+    if(file){
+
+      let reader =
+        new FileReader();
+
+      reader.onload = function(e){
+
+        let imageData =
+          e.target.result;
+
+        document.getElementById("profileImage")
+        .src = imageData;
+
+        localStorage.setItem(
+          "profileImage",
+          imageData
+        );
+
+      };
+
+      reader.readAsDataURL(file);
+
+    }
 
   });
 
-
-  document.getElementById(pageId)
-  .style.display = "block";
-
 }
 
 
 
-// SAVE INCOME
+// ADD INCOME
 
 function addIncome(){
 
-  let incomeText =
+  let text =
     document.getElementById("incomeText").value;
 
-  let incomeAmount =
+  let amount =
     document.getElementById("incomeAmount").value;
 
-
-  if(incomeText !== "" &&
-     incomeAmount !== ""){
+  if(text !== "" &&
+     amount !== ""){
 
     let transaction = {
 
       type:"Income",
 
-      name:incomeText,
+      name:text,
 
-      amount:parseFloat(incomeAmount),
+      amount:parseFloat(amount),
 
       date:
-      new Date().toLocaleDateString(),
-
-      time:
-      new Date().toLocaleTimeString()
+      new Date().toLocaleString()
 
     };
-
 
     let transactions =
       JSON.parse(
         localStorage.getItem("transactions")
       ) || [];
 
-
     transactions.push(transaction);
-
 
     localStorage.setItem(
       "transactions",
       JSON.stringify(transactions)
     );
 
-
-    alert("Income Saved");
-
-
     document.getElementById("incomeText").value = "";
 
     document.getElementById("incomeAmount").value = "";
 
-
     loadDashboard();
-
-    loadStatement();
 
   }
 
@@ -119,63 +169,49 @@ function addIncome(){
 
 
 
-// SAVE EXPENSE
+// ADD EXPENSE
 
 function addExpense(){
 
-  let expenseText =
+  let text =
     document.getElementById("expenseText").value;
 
-  let expenseAmount =
+  let amount =
     document.getElementById("expenseAmount").value;
 
-
-  if(expenseText !== "" &&
-     expenseAmount !== ""){
+  if(text !== "" &&
+     amount !== ""){
 
     let transaction = {
 
       type:"Expense",
 
-      name:expenseText,
+      name:text,
 
-      amount:parseFloat(expenseAmount),
+      amount:parseFloat(amount),
 
       date:
-      new Date().toLocaleDateString(),
-
-      time:
-      new Date().toLocaleTimeString()
+      new Date().toLocaleString()
 
     };
-
 
     let transactions =
       JSON.parse(
         localStorage.getItem("transactions")
       ) || [];
 
-
     transactions.push(transaction);
-
 
     localStorage.setItem(
       "transactions",
       JSON.stringify(transactions)
     );
 
-
-    alert("Expense Saved");
-
-
     document.getElementById("expenseText").value = "";
 
     document.getElementById("expenseAmount").value = "";
 
-
     loadDashboard();
-
-    loadStatement();
 
   }
 
@@ -192,11 +228,9 @@ function loadDashboard(){
       localStorage.getItem("transactions")
     ) || [];
 
-
   let income = 0;
 
   let expense = 0;
-
 
   transactions.forEach(function(item){
 
@@ -213,23 +247,32 @@ function loadDashboard(){
 
   });
 
+  let balance =
+    income - expense;
 
-  let balance = income - expense;
+  if(document.getElementById("balance")){
 
+    document.getElementById("balance")
+    .innerHTML =
+    "$" + balance;
 
-  document.getElementById("balance")
-  .innerHTML =
-  "$" + balance;
+  }
 
+  if(document.getElementById("incomeTotal")){
 
-  document.getElementById("incomeTotal")
-  .innerHTML =
-  "$" + income;
+    document.getElementById("incomeTotal")
+    .innerHTML =
+    "$" + income;
 
+  }
 
-  document.getElementById("expenseTotal")
-  .innerHTML =
-  "$" + expense;
+  if(document.getElementById("expenseTotal")){
+
+    document.getElementById("expenseTotal")
+    .innerHTML =
+    "$" + expense;
+
+  }
 
 }
 
@@ -244,41 +287,44 @@ function loadStatement(){
       localStorage.getItem("transactions")
     ) || [];
 
-
-  let table =
+  let list =
     document.getElementById("statementList");
 
+  if(list){
 
-  table.innerHTML = "";
+    list.innerHTML = "";
 
+    transactions.reverse().forEach(function(item){
 
-  transactions.forEach(function(item){
+      list.innerHTML += `
 
-    table.innerHTML += `
+        <div class="transaction">
 
-      <tr>
+          <div class="transaction-left">
 
-        <td>${item.type}</td>
+            <h3>${item.name}</h3>
 
-        <td>${item.name}</td>
+            <p>${item.date}</p>
 
-        <td>$${item.amount}</td>
+          </div>
 
-        <td>${item.date}</td>
+          <div class="transaction-right
+               ${item.type === "Income"
+                 ? "plus"
+                 : "minus"}">
 
-        <td>${item.time}</td>
+            ${item.type === "Income"
+              ? "+"
+              : "-"}$${item.amount}
 
-      </tr>
+          </div>
 
-    `;
+        </div>
 
-  });
+      `;
+
+    });
+
+  }
 
 }
-
-
-
-// DEFAULT PAGE
-
-document.getElementById("dashboard")
-.style.display = "block";
